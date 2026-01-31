@@ -22,3 +22,7 @@ docker compose run --rm app sh -c "python3 manage.py runserver 0.0.0.0:8000"
 docker compose run --rm app sh -c "python3 manage.py test"
 docker compose run --rm app sh -c "python3 manage.py startapp core"
 docker compose run --rm app sh -c "python3 manage.py test && flake8"
+
+docker compose run --rm app sh -c "python3 manage.py makemigrations"
+docker compose run --rm app sh -c "python3 manage.py createsuperuser"
+docker compose run --rm app sh -c "python3 manage.py wait_for_db && python3 manage.py migrate"
